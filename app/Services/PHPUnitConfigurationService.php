@@ -35,7 +35,7 @@ class PHPUnitConfigurationService
      */
     public function generateTestsSuites(string $testsDirectory, int $numberTestsSuites = 4)
     {
-        throw_if(!$this->isInitialized(), new \Exception('Configuration file is not set.'));
+        $this->isInitialized();
 
         $phpunit = $this
             ->configurationFile
@@ -58,7 +58,9 @@ class PHPUnitConfigurationService
             })
             ->split($numberTestsSuites)
             ->each(function ($filesList, $index) use ($testSuites) {
-                $testSuite = $this->configurationFile->createElement('testsuite');
+                $testSuite = $this
+                    ->configurationFile
+                    ->createElement('testsuite');
                 $testSuite->setAttribute('name', "sliced-testsuite-{$index}");
 
                 collect($filesList)
@@ -82,16 +84,19 @@ class PHPUnitConfigurationService
      */
     public function saveTo(string $destination)
     {
-        throw_if(!$this->isInitialized(), new \Exception('Configuration file is not set.'));
+        $this->isInitialized();
 
         return $this->configurationFile->save($destination);
     }
 
     /**
-     * @return bool
+     * @return void
+     * @throws \Throwable
      */
-    private function isInitialized(): bool
+    private function isInitialized(): void
     {
-        return $this->configurationFile instanceof \DOMDocument;
+        $isInitialized = $this->configurationFile instanceof \DOMDocument;
+
+        throw_if(!$isInitialized, new \Exception('Configuration file is not set.'));
     }
 }
