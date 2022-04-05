@@ -37,7 +37,20 @@ class PHPUnitConfigurationService
     {
         throw_if(!$this->isInitialized(), new \Exception('Configuration file is not set.'));
 
-        $testSuites = $this->configurationFile->createElement('testsuites');
+        $phpunit = $this
+            ->configurationFile
+            ->getElementsByTagName('phpunit')
+            ->item(0);
+        $phpunitTestSuitesNode = $phpunit
+            ->getElementsByTagName('testsuites')
+            ->item(0);
+
+        throw_if(!$phpunit, new \Exception('There is no <phpunit /> section in your phpunit configuration file.'));
+        throw_if(!$phpunitTestSuitesNode, new \Exception('There is no <testsuites /> section in your phpunit configuration file.'));
+
+        $testSuites = $this
+            ->configurationFile
+            ->createElement('testsuites');
 
         collect(File::allFiles($testsDirectory))
             ->filter(function (string $file) {
@@ -56,8 +69,7 @@ class PHPUnitConfigurationService
                 $testSuites->appendChild($testSuite);
             });
 
-        $phpunit = $this->configurationFile->getElementsByTagName('phpunit')->item(0);
-        $phpunit->replaceChild($testSuites, $phpunit->getElementsByTagName('testsuites')->item(0));
+        $phpunit->replaceChild($testSuites, $phpunitTestSuitesNode);
 
         return $this;
     }
