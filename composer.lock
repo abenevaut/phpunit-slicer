@@ -1726,7 +1726,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v9.6.0",
+            "version": "v9.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2215,7 +2215,7 @@
         },
         {
             "name": "illuminate/validation",
-            "version": "v9.6.0",
+            "version": "v9.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
