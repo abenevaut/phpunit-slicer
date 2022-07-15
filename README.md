@@ -2,7 +2,11 @@
 
 Tool to slice PHPUnit tests files to tests suites.
 
+- [Real use case with circleci.com](https://medium.com/@abenevaut/paralize-circleci-php-pipelines-61a0b8c21ac2)
+
 ## Install
+
+- [Available on Packagist.org - abenevaut/phpunit-slicer](https://packagist.org/packages/abenevaut/phpunit-slicer)
 
 ### In PHP project
 ```shell

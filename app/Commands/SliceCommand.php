@@ -62,6 +62,8 @@ class SliceCommand extends Command
             )
             ->saveTo($validator->validate()['phpunit-configuration-destination']);
 
+        $this->info("PHPUnit.xml sliced at {$validator->validate()['phpunit-configuration-destination']}");
+
         return self::SUCCESS;
     }
 }
