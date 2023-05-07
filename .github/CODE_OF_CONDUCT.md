@@ -1,5 +1,9 @@
 Be free to fork this project.
-All inspired code or re-used code have to be licensed to GNU GPLv3.
-No contributions are accepted on this READ ONLY repository.
+
+No contribution is accepted on this READ ONLY repository.
+Please visit the [abenevaut/opensource](https://github.com/abenevaut/opensource) to contribute.
 
 Roadmap: https://github.com/users/abenevaut/projects/9
+
+All inspired code or re-used code have to be licensed to GNU GPLv3.
+Please, take care about licensed projects you can't re-use.

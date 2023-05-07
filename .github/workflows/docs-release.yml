@@ -1,0 +1,34 @@
+name: docs-release
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'docs/**'
+
+defaults:
+  run:
+    working-directory: ./docs
+
+jobs:
+
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    concurrency:
+      group: docs-release
+      cancel-in-progress: true
+    steps:
+
+      - name: Checkout project
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Publish to wiki
+        uses: SwiftDocOrg/github-wiki-publish-action@v1
+        with:
+          path: "docs"
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}

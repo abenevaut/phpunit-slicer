@@ -1,7 +1,4 @@
-| Q | A |
-| :--- | :---: |
-| Do you experience this problem multiple times? | Yes / No |
+No contribution is accepted on this READ ONLY repository.
+Please visit the [abenevaut/opensource](https://github.com/abenevaut/opensource) to contribute.
 
-## How to reproduce it ?
-
-Explain here how to reproduce it ?
+Roadmap: https://github.com/users/abenevaut/projects/9
