@@ -83,7 +83,6 @@ return [
         App\Providers\AppServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
-        \abenevaut\Infrastructure\App\Providers\ArkitectServiceProvider::class,
     ],
 
 ];
