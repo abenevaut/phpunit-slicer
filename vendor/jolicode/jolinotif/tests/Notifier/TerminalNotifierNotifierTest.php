@@ -15,6 +15,9 @@ use Joli\JoliNotif\Notifier;
 use Joli\JoliNotif\Notifier\TerminalNotifierNotifier;
 use Joli\JoliNotif\Util\OsHelper;
 
+/**
+ * @group legacy
+ */
 class TerminalNotifierNotifierTest extends NotifierTestCase
 {
     use CliBasedNotifierTestTrait;
@@ -67,7 +70,7 @@ class TerminalNotifierNotifierTest extends NotifierTestCase
             $iconDir = $this->getIconDir();
 
             return <<<CLI
-                'terminal-notifier' '-message' 'I'\\''m the notification body' '-appIcon' '{$iconDir}/image.gif'
+                'terminal-notifier' '-message' 'I'\\''m the notification body' '-contentImage' '{$iconDir}/image.gif'
                 CLI;
         }
 
@@ -82,7 +85,7 @@ class TerminalNotifierNotifierTest extends NotifierTestCase
             $iconDir = $this->getIconDir();
 
             return <<<CLI
-                'terminal-notifier' '-message' 'I'\\''m the notification body' '-title' 'I'\\''m the notification title' '-appIcon' '{$iconDir}/image.gif' '-open' 'https://google.com'
+                'terminal-notifier' '-message' 'I'\\''m the notification body' '-title' 'I'\\''m the notification title' '-contentImage' '{$iconDir}/image.gif' '-open' 'https://google.com'
                 CLI;
         }
 

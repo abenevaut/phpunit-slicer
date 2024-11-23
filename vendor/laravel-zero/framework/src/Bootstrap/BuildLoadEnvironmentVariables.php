@@ -15,13 +15,13 @@ namespace LaravelZero\Framework\Bootstrap;
 
 use Dotenv\Dotenv;
 use LaravelZero\Framework\Application;
-use LaravelZero\Framework\Contracts\BoostrapperContract;
+use LaravelZero\Framework\Contracts\BootstrapperContract;
 use LaravelZero\Framework\Providers\Build\Build;
 
 /**
  * @internal
  */
-final class BuildLoadEnvironmentVariables implements BoostrapperContract
+final class BuildLoadEnvironmentVariables implements BootstrapperContract
 {
     /**
      * @var \LaravelZero\Framework\Providers\Build\Build
@@ -42,7 +42,7 @@ final class BuildLoadEnvironmentVariables implements BoostrapperContract
     public function bootstrap(Application $app): void
     {
         /*
-         * Override environment variables with the environment file along side the Phar file.
+         * Override environment variables with the environment file alongside the Phar file.
          */
         if ($this->build->shouldUseEnvironmentFile()) {
             Dotenv::createMutable($this->build->getDirectoryPath(), $this->build->environmentFile())->load();

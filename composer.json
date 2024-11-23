@@ -3,7 +3,7 @@
     "description": "Tool to slice PHPUnit tests files to tests suites.",
     "keywords": ["phpunit", "slice", "tests"],
     "type": "project",
-    "license": "GPL-3.0-only",
+    "license": "MIT",
     "homepage": "https://github.com/abenevaut/opensource",
     "support": {
         "issues": "https://github.com/abenevaut/opensource/issues",

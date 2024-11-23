@@ -1,0 +1,59 @@
+name: phpunit-slicer-release
+
+on:
+  release:
+    types: [ created ]
+
+env:
+  php_version: 8.3
+  node_version: lts/iron
+
+jobs:
+
+  publish-binaries:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./builds
+    permissions:
+      contents: write
+    concurrency:
+      group: phpunit-slicer-publish-binaries-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+
+      - name: Checkout project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current release tag
+        id: branch-name
+        run: echo "SOURCE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: add assets to release
+        run: |
+          sha512sum phpunit-slicer > phpunit-slicer.sha512sum
+          gh release upload ${{ steps.branch-name.outputs.SOURCE_TAG }} phpunit-slicer.sha512sum
+          gh release upload ${{ steps.branch-name.outputs.SOURCE_TAG }} phpunit-slicer
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-docs:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: phpunit-slicer-publish-docs-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+
+      - name: Checkout project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish to wiki
+        uses: SwiftDocOrg/github-wiki-publish-action@v1
+        with:
+          path: "docs"
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}

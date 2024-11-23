@@ -34,4 +34,4 @@ if [ -n "$bashSource" ]; then
     fi
 fi
 
-"${dir}/paratest.bat" "$@"
+exec "${dir}/paratest.bat" "$@"

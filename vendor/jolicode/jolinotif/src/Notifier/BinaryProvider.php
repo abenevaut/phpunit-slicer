@@ -11,9 +11,13 @@
 
 namespace Joli\JoliNotif\Notifier;
 
+trigger_deprecation('jolicode/jolinotif', '2.7', 'The "%s" interface is deprecated and will be removed in 3.0.', BinaryProvider::class);
+
 /**
  * Interface implemented by notifiers when they provide their own binaries in
  * case the executable is not natively supported.
+ *
+ * @deprecated since 2.7, will be removed in 3.0
  */
 interface BinaryProvider
 {
@@ -39,6 +43,8 @@ interface BinaryProvider
      * used inside a phar archive.
      *
      * All paths should be relative to the directory pointed by getRootDir().
+     *
+     * @return list<string>
      */
     public function getExtraFiles(): array;
 }

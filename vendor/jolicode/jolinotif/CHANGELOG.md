@@ -1,5 +1,32 @@
 # Changes between versions
 
+## Not released yet
+
+## 2.7.3 (2024-09-30)
+
+* Fixed SnoreToast and Notifu Windows drivers to be non blocking
+
+## 2.7.2 (2024-06-01)
+
+* Changed requirement on psr/log to allow all versions from 1.0 to 3.0
+
+## 2.7.1 (2024-05-03)
+
+* Fixed phar for Windows drivers
+* Fixed executable in verbose mode when no driver is available
+* Fixed executable to better handle option passed several times
+
+## 2.7.0 (2024-05-03)
+
+* Added a new NotifierInterface and DefaultNotifier as the main public API of this package
+* Added wsl-notify-send notifier for Windows Subsystem for Linux
+* Added libnotify based notifier for Linux through FFI
+* Changed TerminalNotifier to use contentImage option for icon instead of appIcon
+* Fixed phar missing some dependencies
+* Marked most of the classes as internal
+* Deprecated all the notifiers classes in favor of the new internal DriverInterface implementations
+* Deprecated the NotifierFactory in favor of the new DefaultNotifier class that hide driver implementation details
+
 ## 2.6.0 (2023-12-03)
 
 * Deprecated Joli\JoliNotif\Util\OsHelper in favor of jolicode/php-os-helper package

@@ -13,15 +13,15 @@ namespace Joli\JoliNotif\Exception;
 
 use Joli\JoliNotif\Notification;
 
-class InvalidNotificationException extends \LogicException implements Exception
+class InvalidNotificationException extends \LogicException implements ExceptionInterface
 {
     private Notification $notification;
 
     public function __construct(
         Notification $notification,
-        $message = '',
-        $code = 0,
-        Exception $previous = null
+        string $message = '',
+        int $code = 0,
+        ?\Throwable $previous = null,
     ) {
         $this->notification = $notification;
 
