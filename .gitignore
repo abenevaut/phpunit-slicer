@@ -1,8 +1,8 @@
+/coverage
 /vendor
 /.idea
 /.vscode
 /.vagrant
-.phpunit.result.cache
 phpunit.xml.test
 phpunit.xml
-coverage
+.phpunit.result.cache

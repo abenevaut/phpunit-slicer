@@ -1,0 +1,45 @@
+name: 'phpunit-slicer-slice'
+description: 'Action to slice PHPUnit tests suits'
+branding:
+  icon: 'scissors'
+  color: 'blue'
+inputs:
+  number-tests-suites:
+    description: 'Number of tests suites to generate'
+    required: true
+    default: '1'
+    pattern: '^[0-9]+$'
+  phpunit-configuration:
+    description: 'Path to phpunit.xml.dist (or phpunit.xml) to add generated tests suites'
+    required: true
+  phpunit-configuration-destination:
+    description: 'Path to save phpunit.xml with generated tests suites'
+    required: true
+  tests-directory:
+    description: 'Path to tests directory where to search tests. All tests should end with "Test.php"'
+    required: true
+  php-version:
+    description: 'PHP version to use (supports 8.0 and above)'
+    required: false
+    default: '8.3'
+    pattern: '^8\.[0-9]+$'
+runs:
+  using: "composite"
+  steps:
+
+    - name: Initialize PHP ${{env.PHP_VERSION}}
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{env.PHP_VERSION}}
+        tools: abenevaut/phpunit-slicer
+      env:
+        PHP_VERSION: ${{ inputs.php-version }}
+
+    - name: Slice the tests suits
+      run: phpunit-slicer slice ${{env.NUMBER_TESTS_SUITES}} ${{env.PHPUNIT_CONFIGURATION}} ${{env.PHPUNIT_CONFIGURATION_DESTINATION}} ${{env.TESTS_DIRECTORY}}
+      shell: bash
+      env:
+        NUMBER_TESTS_SUITES: ${{ inputs.number-tests-suites }}
+        PHPUNIT_CONFIGURATION: ${{ inputs.phpunit-configuration }}
+        PHPUNIT_CONFIGURATION_DESTINATION: ${{ inputs.phpunit-configuration-destination }}
+        TESTS_DIRECTORY: ${{ inputs.tests-directory }}
