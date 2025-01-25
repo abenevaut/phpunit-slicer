@@ -129,14 +129,13 @@ final class ResultPrinter
         $output->write("\n");
     }
 
-    /** @param list<SplFileInfo> $teamcityFiles */
     public function printFeedback(
         SplFileInfo $progressFile,
         SplFileInfo $outputFile,
-        array $teamcityFiles
+        SplFileInfo|null $teamcityFile
     ): void {
-        if ($this->options->needsTeamcity) {
-            $teamcityProgress = $this->tailMultiple($teamcityFiles);
+        if ($this->options->needsTeamcity && $teamcityFile !== null) {
+            $teamcityProgress = $this->tailMultiple([$teamcityFile]);
 
             if ($this->teamcityLogFileHandle !== null) {
                 fwrite($this->teamcityLogFileHandle, $teamcityProgress);
@@ -200,7 +199,7 @@ final class ResultPrinter
             $this->printer,
             true,
             true,
-            true,
+            $this->options->configuration->displayDetailsOnPhpunitDeprecations(),
             true,
             true,
             true,
@@ -220,7 +219,7 @@ final class ResultPrinter
                 $this->printer,
                 true,
                 true,
-                true,
+                $this->options->configuration->displayDetailsOnPhpunitDeprecations(),
                 false,
                 false,
                 false,

@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^8.1",
-        "abenevaut/laravel-infrastructure": "^0.2.2",
+        "abenevaut/laravel-infrastructure": "^0.4.0",
         "illuminate/translation": "^10.9",
         "illuminate/validation": "^10.9",
         "nunomaduro/termwind": "^1.15"
@@ -26,7 +26,9 @@
         "laravel-zero/framework": "^10.0",
         "mockery/mockery": "^1.5.0",
         "pestphp/pest": "^2.6.0",
-        "pestphp/pest-plugin-faker": "^2.0"
+        "pestphp/pest-plugin-faker": "^2.0",
+        "phpstan/phpstan": "^2.0",
+        "squizlabs/php_codesniffer": "^3.11"
     },
     "autoload": {
         "psr-4": {

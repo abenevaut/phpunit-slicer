@@ -45,8 +45,14 @@ class PHPUnitConfigurationService
             ->getElementsByTagName('testsuites')
             ->item(0);
 
-        throw_if(!$phpunit, new \Exception('There is no <phpunit /> section in your phpunit configuration file.'));
-        throw_if(!$phpunitTestSuitesNode, new \Exception('There is no <testsuites /> section in your phpunit configuration file.'));
+        throw_if(
+            !$phpunit,
+            new \Exception('There is no <phpunit /> section in your phpunit configuration file.')
+        );
+        throw_if(
+            !$phpunitTestSuitesNode,
+            new \Exception('There is no <testsuites /> section in your phpunit configuration file.')
+        );
 
         $testSuites = $this
             ->configurationFile

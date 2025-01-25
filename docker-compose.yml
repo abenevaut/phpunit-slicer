@@ -1,0 +1,11 @@
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - php_xdebug_log=/var/task/xdebug-errors.log
+    volumes:
+      - .:/var/task

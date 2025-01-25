@@ -34,17 +34,16 @@ class SliceCommand extends Command
     public function handle()
     {
         $validator = Validator::make([
-                'number-tests-suites' => $this->argument('number-tests-suites'),
-                'phpunit-configuration' => $this->argument('phpunit-configuration'),
-                'phpunit-configuration-destination' => $this->argument('phpunit-configuration-destination'),
-                'tests-directory' => $this->argument('tests-directory'),
-            ], [
-                'number-tests-suites' => 'integer|min:1',
-                'phpunit-configuration' => [new FileExistsRule],
-                'phpunit-configuration-destination' => 'required',
-                'tests-directory' => [new DirectoryExistsRule],
-            ]
-        );
+            'number-tests-suites' => $this->argument('number-tests-suites'),
+            'phpunit-configuration' => $this->argument('phpunit-configuration'),
+            'phpunit-configuration-destination' => $this->argument('phpunit-configuration-destination'),
+            'tests-directory' => $this->argument('tests-directory'),
+        ], [
+            'number-tests-suites' => 'integer|min:1',
+            'phpunit-configuration' => [new FileExistsRule()],
+            'phpunit-configuration-destination' => 'required',
+            'tests-directory' => [new DirectoryExistsRule()],
+        ]);
 
         if ($validator->errors()->any() === true) {
             foreach ($validator->errors()->all() as $errorMessage) {

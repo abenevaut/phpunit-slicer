@@ -6,6 +6,10 @@ Based on [@fideloper article about hexagonal architecture](https://fideloper.com
 
 To follow infrastructure base concept
 
-```
+```bash
 composer require abenevaut/laravel-infrastructure
 ```
+
+## Components
+
+

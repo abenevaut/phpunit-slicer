@@ -1,0 +1,5 @@
+parameters:
+  level: 0
+  editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+  paths:
+    - app

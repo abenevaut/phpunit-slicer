@@ -1,5 +1,7 @@
 # phpunit-slicer
 
+![demo](https://raw.githubusercontent.com/abenevaut/phpunit-slicer/refs/heads/master/demo.gif)
+
 [Wiki](https://github.com/abenevaut/phpunit-slicer/wiki)
 
 ## Licensing
